@@ -1,0 +1,7 @@
+.style{
+    margin-top: 70px;
+    margin-bottom: 100px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}

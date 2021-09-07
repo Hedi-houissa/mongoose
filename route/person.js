@@ -18,23 +18,7 @@ router.get("/test", (req, res) => {
  * @data : req.body
  */
 
-router.post("/",  async (req, res) => {
-    try {
-      const newPerson = req.body;
-      const personToFind = Person.findOne({ name: newPerson.name });
-      if (!newPerson.name || !newPerson.age) {
-        return res.status(400).send({ msg: "name and age required" });
-      }
-      if (personToFind) {
-        return res.status(400).send({ msg: "alredy exist !!!", personToFind });
-      }
-      const personToAdd = new Person(newPerson);
-      await personToAdd.save();
-      res.status(200).send({ msg: "person add succ ...", personToAdd });
-    } catch (error) {
-      res.status(400).send({ msg: "can not add person ", error });
-    }
-  });
+router.post("/",controlles.addPerson );
 
 /**
  * @description : get all
@@ -51,7 +35,7 @@ router.get("/", controlles.getPerson);
  * @data : req.body
  */
 
-router.delete("/:id",controlles.deletePerson);
+router.delete("/:_id", controlles.deletePerson);
 
 /**
  * @description : get one by id person
@@ -78,6 +62,6 @@ router.get("/food/:name", controlles.getOnePerson);
  * @data : req.body
  */
 
-router.put("/:_id",controlles.updatePerson);
+router.put("/:_id", controlles.updatePerson);
 
 module.exports = router;

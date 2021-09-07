@@ -11,6 +11,7 @@ const connectDB = require('./connectDB')
 connectDB()
 //body parser
 app.use(express.json())
+
 //route
 const router = require('./route/person')
 app.use('/persons/',router)
